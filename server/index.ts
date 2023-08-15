@@ -1,4 +1,4 @@
-import express, { json } from "express";
+import express, { json, Request, Response } from "express";
 import { connect } from "mongoose";
 import cors from "cors";
 
@@ -15,6 +15,9 @@ app.use(json());
 
 app.use("/admin", adminAuthRouter, adminCourseRouter);
 app.use("/user", userAuthRouter, userCourseRouter);
+app.get("/", (req: Request, res: Response) => {
+  res.send("Nothing on this route...");
+});
 
 // Connect to MongoDB
 const connectionString =
