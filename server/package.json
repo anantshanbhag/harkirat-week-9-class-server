@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "dev": "npx tsc && node dist/index.js",
-    "start": "npm run build && npm run dev"
+    "start": "cd ../admin-client && npm install && npm run build && rm -rf ../server/public && mkdir -p ../server/public && mv ./dist/* ../server/public && cd ../server && npx tsc && node dist/index.js"
   },
   "keywords": [],
   "author": "",

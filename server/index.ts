@@ -1,6 +1,7 @@
 import express, { json, Request, Response } from "express";
 import { connect } from "mongoose";
 import cors from "cors";
+import path from "path";
 
 import adminAuthRouter from "./routes/admin/auth.js";
 import adminCourseRouter from "./routes/admin/course.js";
@@ -15,8 +16,10 @@ app.use(json());
 
 app.use("/admin", adminAuthRouter, adminCourseRouter);
 app.use("/user", userAuthRouter, userCourseRouter);
-app.get("/", (req: Request, res: Response) => {
-  res.send("This is the landing page...");
+
+app.use(express.static("public"));
+app.use("/*", (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
 // Connect to MongoDB
