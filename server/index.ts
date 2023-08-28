@@ -16,7 +16,7 @@ app.use(json());
 app.use("/admin", adminAuthRouter, adminCourseRouter);
 app.use("/user", userAuthRouter, userCourseRouter);
 app.get("/", (req: Request, res: Response) => {
-  res.send("Nothing on this route...");
+  res.send("This is the landing page...");
 });
 
 // Connect to MongoDB
